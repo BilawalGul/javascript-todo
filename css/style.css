@@ -1,0 +1,105 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'poppins' sans-serif;
+    
+    background:linear-gradient(to left, #1002fa, #2888eb, #00d4ff);
+    color:#fff;
+    padding: 0rem .5rem 0rem .5rem;
+}
+@media (max-width:700px){
+    body{
+        font-size: 6px;
+        padding: 0rem .5rem 0rem .5rem;
+    } 
+}
+@media (max-width:390px){
+    body{
+        font-size: 4px;
+        padding: 0rem .5rem 0rem .5rem;
+    } 
+}
+
+header , form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+header h1{
+    font-size: 3rem;
+    font-family: 'poppins';
+    font-weight: 500;
+}
+
+form input, 
+form button{
+    padding:.5rem;
+    background:#fff;
+    border:0px;
+    font-size: 1.6rem;
+    font-family: 'poppins' sans-serif;
+}
+
+form button{
+    color:#1002fa;
+    background:#fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+form button:hover{
+    background:#1002fa;
+    color:#fff;
+}
+.todo-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-list{
+    list-style-type: none;
+    min-width: 27%;
+}
+.todo-div{
+    
+    background:#fff;
+    margin-top:0.5rem;
+    color:#000;
+    font-size: 1.6rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition:all 0.3s;
+}
+.todo-div li{
+    flex:1;
+
+}
+.complete-button, .trash-button{
+    border:0px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    background:#0a00b9;
+    color:#fff;
+    
+}
+.complete-button{
+    background:rgb(16, 173, 16);
+}
+.fa-check, 
+.fa-trash{
+    pointer-events: none;
+}
+.completed{
+   text-decoration: line-through;
+   opacity: 0.6;
+}
+.fall{
+    transform: translateY(3rem) rotateZ(20deg);
+    opacity: 0;
+}
