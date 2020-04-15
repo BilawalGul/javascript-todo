@@ -138,3 +138,13 @@ select{
 .select>option{
     padding:10px;
 }
+.error{
+    margin:10px 0px;
+    text-align: center;
+}
+.error>p{
+    display: inline-block;
+    font-size: 1.5rem;
+    background:rgb(243, 60, 60);
+    padding: 10px;
+}

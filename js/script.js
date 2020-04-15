@@ -1,8 +1,10 @@
 // selectors
 const todoList = document.querySelector('.todo-list');
 const todoInput =document.querySelector('.todo-input');
+
 const todoButton =document.querySelector('.todo-button');
 const todoFilter = document.querySelector('.todo-filter');
+const error = document.querySelector('.error');
 
 
 // add event listners
@@ -72,6 +74,7 @@ function check(e){
     if(item.classList[0] === 'complete-button'){
         const todo = item.parentElement;
         todo.classList.toggle('completed'); 
+        completeFromLocal(todo);
          
     }
 }
@@ -99,13 +102,13 @@ function filterTodo(e){
                 }
                 break;
 
-                case 'completed':
-                    if(todo.classList.contains('completed')){
-                        todo.style.display = 'flex';
-                    }else{
-                        todo.style.display = 'none';
-                    }
-                    break;
+            case 'completed':
+                if(todo.classList.contains('completed')){
+                    todo.style.display = 'flex';
+                }else{
+                    todo.style.display = 'none';
+                }
+                break;
         }
     });
     
@@ -125,9 +128,19 @@ function checkLocal(){
 function saveToLocal(todo){
 
     let todos = checkLocal();
-    // push to local storage
-    todos.push(todo);
-    localStorage.setItem('todos', JSON.stringify(todos));
+    let lowerTodo= todo.toLowerCase();
+    // check if the task is already minitoned
+    if(todos.includes(lowerTodo)){
+
+        error.innerHTML='<p>this task is already mentioned!</p>';
+    
+    }else{
+         // push to local storage
+        todos.push(lowerTodo);
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }
+    
+   
        
 }
 
@@ -181,4 +194,13 @@ function removeFromLocal(todo){
     const index = todos.indexOf(item);
     todos.splice(index , 1);
     localStorage.setItem('todos' , JSON.stringify(todos));
+}
+
+// complete from localStorage
+function completeFromLocal(todo){
+    let todos = checkLocal();
+    const item = todo.children[0];
+    if(item.parentElement.classList.contains('completed')){
+        console.log('completed'+item.outerHTML);
+    }
 }
